@@ -1,18 +1,11 @@
-class Square extends React.Component {
-  constructor() {
-    super(); //explicitly call super when defining constructor of subclass
-    this.state = { //initialise state
-      value: null
-    };
-  }
-  render() {
-    return (
-      <button className="square" onClick={() => this.props.onClick()}>
-        {this.props.value}
+function Square(props) { //square now just function component - takes props and returns what should be rendered
+  return {
+      <button className="square" onClick={() => props.onClick()}>
+      {props.value}
       </button>
-    );
-  }
+  };
 }
+
 
 class Board extends React.Component {
   constructor() {
