@@ -1,9 +1,9 @@
-function Square(props) { //square now just function component - takes props and returns what should be rendered
-  return {
-      <button className="square" onClick={() => props.onClick()}>
+function Square(props) {
+  return (
+    <button className="square" onClick={() => props.onClick()}>
       {props.value}
-      </button>
-  };
+    </button>
+  );
 }
 
 
@@ -12,6 +12,7 @@ class Board extends React.Component {
     super();
     this.state = {
       squares: Array(9).fill(null),
+      xIsNext: true,
     };
   }
   renderSquare(i) {
@@ -20,8 +21,11 @@ class Board extends React.Component {
   }
   handleClick(i) {
     const squares = this.state.squares.slice(); //slice copies squares array instead of mutating it
-    squares[i] = 'X';
-    this.setState({squares: squares})
+    squares[i] = this.state.xIsNext ? 'X' : 'O';
+    this.setState({
+      squares: squares,
+      xIsNext: !this.state.xIsNext,
+    })
   }
   render() {
     const status = 'Next player: X';
