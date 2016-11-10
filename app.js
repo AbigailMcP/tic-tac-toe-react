@@ -6,7 +6,6 @@ function Square(props) {
   );
 }
 
-
 class Board extends React.Component {
   renderSquare(i) {
     //pass two props from Board to Square: value and onClick
